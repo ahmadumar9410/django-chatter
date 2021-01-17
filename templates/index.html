@@ -1,0 +1,29 @@
+{% if user.is_authenticated %}
+{% include 'header.html' %}
+<div class="layout">
+  {% include 'navigation.html' %}
+  {% include 'sidebar.html' %}
+  {% include 'addfriends.html' %}
+  {% include 'createChat.html' %}
+  <div class="main">
+    <div class="tab-content" id="nav-tabContent">
+      <!-- Start of Babble -->
+      <div class="babble tab-pane fade active show" id="list-chat" role="tabpanel" aria-labelledby="list-chat-list">
+        {% include 'startofoldchat.html' %}
+        {% include 'startofoldcall.html' %}
+      </div>
+      <!-- End of Babble -->
+      <!-- Start of Babble -->
+      <div class="babble tab-pane fade" id="list-empty" role="tabpanel" aria-labelledby="list-empty-list">
+        {% include "startofnewchat.html" %}
+        {% include "startofnewcall.html" %}
+      </div>
+      <!-- End of Babble -->
+    </div>
+  </div>
+</div>
+<!-- Layout -->
+{% include "footer.html" %}
+{% else %}
+{% include "loginrequired.html" %}
+{% endif %}

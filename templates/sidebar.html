@@ -1,0 +1,171 @@
+        <!-- Start of Sidebar -->
+        <div class="sidebar" id="sidebar">
+          <div class="container">
+            <div class="col-md-12">
+              <div class="tab-content">
+
+                <!-- Start of Discussions -->
+                <div id="discussions" class="tab-pane fade active show">
+                  <div class="search">
+                    <form class="form-inline position-relative">
+                      <input type="search" class="form-control" id="conversations"
+                        placeholder="Search for conversations..." />
+                      <button type="button" class="btn btn-link loop">
+                        <i class="material-icons">search</i>
+                      </button>
+                    </form>
+                    <button class="btn create" data-toggle="modal" data-target="#startnewchat">
+                      <i class="material-icons">create</i>
+                    </button>
+                  </div>
+                  <div class="list-group sort">
+                    <button class="btn filterDiscussionsBtn active show" data-toggle="list" data-filter="all">
+                      All
+                    </button>
+                    <button class="btn filterDiscussionsBtn" data-toggle="list" data-filter="read">
+                      Read
+                    </button>
+                    <button class="btn filterDiscussionsBtn" data-toggle="list" data-filter="unread">
+                      Unread
+                    </button>
+                  </div>
+                  <div class="discussions">
+                    <h1>Discussions</h1>
+                    <div class="list-group" id="chats" role="tablist">
+                    {% for friend in friendList %}
+                    
+                    
+                      <a href="/dashboard/{{friend.username}}" class="filterDiscussions all unread single active" 
+                      >
+                        <img class="avatar-md" src="/static/dist/img/avatars/avatar-female-1.jpg" data-toggle="tooltip"
+                          data-placement="top" title="{{friend.first_name}}" alt="avatar" />
+                        <div class="status">
+                          <i class="material-icons online">fiber_manual_record</i>
+                        </div>
+                        <div class="new bg-yellow">
+                          <span>+7</span>
+                        </div>
+                        <div class="data">
+                          <h5>{{friend.first_name}}</h5>
+                          <span>Mon</span>
+                         
+                        </div>
+                      </a>
+                    {% endfor %}
+                      </div>
+               </div>
+                </div>
+                <!-- End of Discussions -->
+
+                <!-- Start of Settings -->
+                <div class="tab-pane fade" id="settings">
+                  <div class="settings">
+                    <div class="profile">
+                      <img class="avatar-xl" src="/static/dist/img/avatars/avatar-male-1.jpg" alt="avatar" />
+                      <h1><a href="#">{{showcasename}}</a></h1>
+                      <span>Helena, Montana</span>
+                      <div class="stats">
+                        <div class="item">
+                          <h2>122</h2>
+                          <h3>Fellas</h3>
+                        </div>
+                        <div class="item">
+                          <h2>305</h2>
+                          <h3>Chats</h3>
+                        </div>
+                        <div class="item">
+                          <h2>1538</h2>
+                          <h3>Posts</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="categories" id="accordionSettings">
+                      <h1>Settings</h1>
+                      <!-- Start of My Account -->
+                      <div class="category">
+                        <a href="#" class="title collapsed" id="headingOne" data-toggle="collapse"
+                          data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <i class="material-icons md-30 online">person_outline</i>
+                          <div class="data">
+                            <h5>My Account</h5>
+                            <p>Update your profile details</p>
+                          </div>
+                          <i class="material-icons">keyboard_arrow_right</i>
+                        </a>
+                        <div class="collapse" id="collapseOne" aria-labelledby="headingOne"
+                          data-parent="#accordionSettings">
+                          <div class="content">
+                            <div class="upload">
+                              <div class="data">
+                                <img class="avatar-xl" src="/static/dist/img/avatars/avatar-male-1.jpg" alt="image" />
+                                <label>
+                                  <input type="file" />
+                                  <span class="btn button">Upload avatar</span>
+                                </label>
+                              </div>
+                              <p>
+                                For best results, use an image at least 256px by
+                                256px in either .jpg or .png format!
+                              </p>
+                            </div>
+                            <form>
+                              <div class="parent">
+                                <div class="field">
+                                  <label for="firstName">First name <span>*</span></label>
+                                  <input type="text" class="form-control" id="firstName" placeholder="First name"
+                                    value="Michael" required />
+                                </div>
+                                <div class="field">
+                                  <label for="lastName">Last name <span>*</span></label>
+                                  <input type="text" class="form-control" id="lastName" placeholder="Last name"
+                                    value="Knudsen" required />
+                                </div>
+                              </div>
+                              <div class="field">
+                                <label for="email">Email <span>*</span></label>
+                                <input type="email" class="form-control" id="email"
+                                  placeholder="Enter your email address" value="michael@gmail.com" required />
+                              </div>
+                              <div class="field">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password"
+                                  placeholder="Enter a new password" value="password" required />
+                              </div>
+                              <div class="field">
+                                <label for="location">Location</label>
+                                <input type="text" class="form-control" id="location" placeholder="Enter your location"
+                                  value="Helena, Montana" required />
+                              </div>
+                              <button class="btn btn-link w-100">
+                                Delete Account
+                              </button>
+                              <button type="submit" class="btn button w-100">
+                                Apply
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End of My Account -->
+                    
+                      <!-- Start of Logout -->
+                      <div class="category">
+                        <a href="/" class="title collapsed">
+                          <i class="material-icons md-30 online">power_settings_new</i>
+                          <div class="data">
+                            <h5>Power Off</h5>
+                            <p>Log out of your account</p>
+                          </div>
+                          <i class="material-icons">keyboard_arrow_right</i>
+                        </a>
+                      </div>
+                      <!-- End of Logout -->
+                    </div>
+                  </div>
+                </div>
+                <!-- End of Settings -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Sidebar -->

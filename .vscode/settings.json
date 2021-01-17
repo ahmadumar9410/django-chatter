@@ -1,0 +1,9 @@
+{
+    "python.linting.banditEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pylamaEnabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": true,
+    "python.pythonPath": "C:\\Users\\Mohammad Abubakar\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+}
