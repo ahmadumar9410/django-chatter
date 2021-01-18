@@ -14,15 +14,16 @@ def home(request):
     showcasename = retunShowCaseName(request)
     if request.method == 'POST':
         reply = request.POST['reply']
-        message = Message.objects.create(
-            from_username=username, to_username='ahmad', message=reply)
-        message.save()
-        messages.success(request, 'Message successfully set')
-        print('we some how reached here')
-        return redirect("/dashboard/")
+        if reply != '' or reply != None:
+            print('Reply: ' + reply)
+            message = Message.objects.create(
+                from_username=username, to_username='ahmad', message=reply)
+            message.save()
+            messages.success(request, 'Message successfully set')
+            print('we some how reached here')
+            return redirect("/dashboard/")
     # for user in userContact:
     #     print(user.friends)
-    print()
 
     return render(request, 'index.html',
                   context={'showcasename': showcasename,
@@ -32,7 +33,6 @@ def home(request):
 
 def chat(request, slug):
     username = request.user.get_username()
-    print("Calling Here")
     userContact = Contact.objects.filter(username=username)
     friendList = None
     if len(userContact) > 0:
@@ -40,16 +40,17 @@ def chat(request, slug):
     showcasename = retunShowCaseName(request)
     if request.method == 'POST':
         reply = request.POST['reply']
-        message = Message.objects.create(
-            from_username=username, to_username=slug, message=reply)
-        message.save()
-        messages.success(request, 'Message successfully sent')
-        print('we some how reached here')
-        return redirect("/dashboard/"+slug)
+        if not reply:
+            print('Reply: ' + reply)
+            message = Message.objects.create(
+                from_username=username, to_username=slug, message=reply)
+            message.save()
+            messages.success(request, 'Message successfully sent')
+            print('we some how reached here')
+            return redirect("/dashboard/"+slug)
     messages1 = returnMessages(username, slug)
     # for user in userContact:
     #     print(user.friends)
-    print(messages1)
 
     return render(request, 'index.html',
                   context={'showcasename': showcasename,
@@ -83,9 +84,11 @@ def retunShowCaseName(request):
 def messageSendingProcedure(request, username, to_username):
     if request.method == 'POST':
         reply = request.POST['reply']
-        message = Message.objects.create(
-            from_username=username, to_username=to_username, message=reply)
-        message.save()
-        messages.success(request, 'Message successfully set')
-        print('we some how reached here')
-        return redirect("/login/")
+        if reply != '' or reply != None:
+            print('Reply: ' + reply)
+            message = Message.objects.create(
+                from_username=username, to_username=to_username, message=reply)
+            message.save()
+            messages.success(request, 'Message successfully set')
+            print('we some how reached here')
+            return redirect("/login/")
